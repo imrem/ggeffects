@@ -123,17 +123,17 @@ ggemmeans <- function(model,
     cleaned_terms = cleaned_terms
   )
 
-  # apply link inverse function
-  linv <- insight::link_inverse(model)
-  if (!is.null(linv) && (inherits(model, "lrm") || pmode == "link" || (inherits(model, "MixMod") && type != "fe.zi"))) {
-    result$predicted <- linv(result$predicted)
-    result$conf.low <- linv(result$conf.low)
-    result$conf.high <- linv(result$conf.high)
-  }
+#  # apply link inverse function
+#  linv <- insight::link_inverse(model)
+#  if (!is.null(linv) && (inherits(model, "lrm") || pmode == "link" || (inherits(model, "MixMod") && type != "fe.zi"))) {
+#    result$predicted <- linv(result$predicted)
+#    result$conf.low <- linv(result$conf.low)
+#    result$conf.high <- linv(result$conf.high)
+#  }
 
-  # check if outcome is log-transformed, and if so,
-  # back-transform predicted values to response scale
-  result <- .back_transform_response(model, result, back.transform)
+#  # check if outcome is log-transformed, and if so,
+#  # back-transform predicted values to response scale
+#  result <- .back_transform_response(model, result, back.transform)
 
   attr(result, "model.name") <- model_name
 
